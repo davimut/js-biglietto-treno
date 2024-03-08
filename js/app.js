@@ -50,13 +50,14 @@ const sconto20 = prezzoKm * 0.2 //numeri
 
 const sconto40 = prezzoKm * 0.4 //numeri
 
+let prezzoFinale  = document.getElementById("risultato");
 
 if( eta < 18) {//SE il cliente è <18, verrà applicato uno sconto del 20% sulla tariffa dei km scelti
-console.log('abbiamo applicato uno sconto del 20% sul tuo bilglietto! essendo minorenne il prezzo del tuo biglietto sara ', (prezzoKm - sconto20).toFixed(2)+'€') //string 
+prezzoFinale.innerText = ('abbiamo applicato uno sconto del 20% sul tuo bilglietto! essendo minorenne il prezzo del tuo biglietto sara  '+ (prezzoKm - sconto20).toFixed(2)+'€') //string 
 }else if( eta >= 65){//ALTRIMENTI SE il cliente sara >65 ,verra applicato uno sconto del 40%
-console.log('abbiamo applicato uno sconto del 40% sul tuo bilglietto! essendo over 65 il prezzo del tuo biglietto sara ', (prezzoKm - sconto40).toFixed(2)+'€') //string 
+ prezzoFinale.innerText = ('abbiamo applicato uno sconto del 40% sul tuo bilglietto! essendo over 65 il prezzo del tuo biglietto sara  '+ (prezzoKm - sconto40).toFixed(2)+'€') //string 
 }else {//ALTRIMENTI tariffa normale
- console.log( 'non abbiamo applicato nessuno sconto! purtroppo non essendo minorenne o over 65 il tuo prezzo è', prezzoKm+'€')  //string 
+ prezzoFinale.innerText = ( 'non abbiamo applicato nessuno sconto! purtroppo non essendo minorenne o over 65 il tuo prezzo è   '+prezzoKm +'€')  //string 
 } 
  
 
