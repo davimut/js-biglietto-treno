@@ -31,6 +31,8 @@
 //ALTRIMENTI tariffa normale
 
 
+//
+
 //DOMANDARE al cliente eta
 const eta = parseInt( prompt('inserisci la tua eta !'))
 console.log('eta che hai scelto',eta) //numero | null
@@ -43,7 +45,7 @@ console.log('i chilometri che hai scelto', km) //numero| null
 const prezzoBase = 0.21
 
 //calcolo tariffa km
-let prezzoKm = (prezzoBase*100 * km)/100  //numeri (solo 2 decimali)
+let prezzoKm = (prezzoBase * km)//numeri 
 
 //sconto del prezzo dei km del
 const sconto20 = prezzoKm * 0.2 //numeri
@@ -51,13 +53,22 @@ const sconto20 = prezzoKm * 0.2 //numeri
 const sconto40 = prezzoKm * 0.4 //numeri
 
 let prezzoFinale  = document.getElementById("risultato");
+console.log(prezzoFinale)
 
+if (km>0 && eta>=0 && eta<120 && !isNaN(km) && !isNaN(eta)) {  
+ //SE km e eta non sono 0 o NaN esegui tutto il calcolo (eta superiore a 120 anni)
 if( eta < 18) {//SE il cliente è <18, verrà applicato uno sconto del 20% sulla tariffa dei km scelti
-prezzoFinale.innerText = ('abbiamo applicato uno sconto del 20% sul tuo bilglietto! essendo minorenne il prezzo del tuo biglietto sara  '+ (prezzoKm - sconto20).toFixed(2)+'€') //string 
-}else if( eta >= 65){//ALTRIMENTI SE il cliente sara >65 ,verra applicato uno sconto del 40%
- prezzoFinale.innerText = ('abbiamo applicato uno sconto del 40% sul tuo bilglietto! essendo over 65 il prezzo del tuo biglietto sara  '+ (prezzoKm - sconto40).toFixed(2)+'€') //string 
+prezzoFinale.innerHTML = ('abbiamo applicato uno sconto del 20% sul tuo bilglietto! essendo minorenne il prezzo del tuo biglietto sara  '+ (prezzoKm - sconto20).toFixed(2)+'€') //string 
+}else if( eta > 65){//ALTRIMENTI SE il cliente sara >65 ,verra applicato uno sconto del 40%
+ prezzoFinale.innerHTML= ('abbiamo applicato uno sconto del 40% sul tuo bilglietto! essendo over 65 il prezzo del tuo biglietto sara  '+ (prezzoKm - sconto40).toFixed(2)+'€') //string 
 }else {//ALTRIMENTI tariffa normale
- prezzoFinale.innerText = ( 'non abbiamo applicato nessuno sconto! purtroppo non essendo minorenne o over 65 il tuo prezzo è   '+prezzoKm +'€')  //string 
-} 
+ prezzoFinale.innerHTML= ( 'non abbiamo applicato nessuno sconto! purtroppo non essendo minorenne o over 65 il tuo prezzo è   '+ (prezzoKm).toFixed(2) +'€')  //string 
+}
+}
+//ALTRIMENTI non sara eseguito il calcol
+else {
+ prezzoFinale.innerHTML = ('non è stato possibile eseguire il calcolo! inserisci valori reali!')
+}
  
+
 
