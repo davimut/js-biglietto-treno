@@ -55,19 +55,18 @@ const sconto40 = prezzoKm * 0.4 //numeri
 let prezzoFinale  = document.getElementById("risultato");
 console.log(prezzoFinale)
 
-if (km>0 && eta>=0 && eta<120 && !isNaN(km) && !isNaN(eta)) {  
- //SE km e eta non sono 0 o NaN esegui tutto il calcolo (eta superiore a 120 anni)
+if (!isNaN(km) && !isNaN(eta) && eta >0 && km>0 && eta<110) 
+{
+
 if( eta < 18) {//SE il cliente è <18, verrà applicato uno sconto del 20% sulla tariffa dei km scelti
 prezzoFinale.innerHTML = ('abbiamo applicato uno sconto del 20% sul tuo bilglietto! essendo minorenne il prezzo del tuo biglietto sara  '+ (prezzoKm - sconto20).toFixed(2)+'€') //string 
 }else if( eta > 65){//ALTRIMENTI SE il cliente sara >65 ,verra applicato uno sconto del 40%
  prezzoFinale.innerHTML= ('abbiamo applicato uno sconto del 40% sul tuo bilglietto! essendo over 65 il prezzo del tuo biglietto sara  '+ (prezzoKm - sconto40).toFixed(2)+'€') //string 
 }else {//ALTRIMENTI tariffa normale
  prezzoFinale.innerHTML= ( 'non abbiamo applicato nessuno sconto! purtroppo non essendo minorenne o over 65 il tuo prezzo è   '+ (prezzoKm).toFixed(2) +'€')  //string 
-}
-}
-//ALTRIMENTI non sara eseguito il calcol
+}  }
 else {
- prezzoFinale.innerHTML = ('non è stato possibile eseguire il calcolo! inserisci valori reali!')
+    prezzoFinale.innerHTML = ('non è stato possibile eseguire il calcolo')
 }
  
 
